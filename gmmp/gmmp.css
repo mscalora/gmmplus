@@ -1,0 +1,66 @@
+#gmmp-marker {
+    position: fixed;
+    z-index: 999999999;
+    color: white;
+    font-size: 10px;
+    padding: 4px;
+    top: 20px;
+    right: 26px;
+    font-family: monospace;
+    background: #ff7928;
+    color: black;
+    font-weight: bold;
+}
+
+/** GMM Tweaks **/
+
+.kd-butterBar-container { position: relative; top: -29px }
+
+/** GMMP UI **/
+
+#gmmp-emode {
+    position: fixed;
+    background: #aaa;
+    top: 19px;
+    right: 311px;
+    padding: 2px 10px;
+    border-radius: 6px;
+    color: white;
+    opacity: 0.5;
+    z-index: 999999999;
+}
+
+#gmmp-emode.ON {
+    background: green;
+    opacity: 1;
+}
+
+#gmmp-emode.OFF {
+    background: red;
+    opacity: 1;
+}
+
+#gmmp-emode.ON:before,
+#gmmp-emode.OFF:before {
+    content:"Elastic Mode ";
+}
+
+#gmmp-emode:before {
+    content:"GMMPlus ";
+}
+
+#gmmp-emode.OFF:after {
+    content:"OFF";
+}
+
+#gmmp-emode.ON:after {
+    content:"ON";
+}
+
+#gmmp-emode:after {
+    content: "⚙";
+}
+
+#gmmp-emode:hover {
+    opacity: 1;
+}

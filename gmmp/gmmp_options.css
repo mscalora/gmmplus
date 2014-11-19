@@ -1,0 +1,566 @@
+@charset "UTF-8";
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-width: 357px;
+    overflow-x: hidden;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 13px;
+}
+
+#content {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+ul > li {
+    list-style: none;
+}
+
+h3#title {
+    margin: 8px 0 0;
+    text-align: center;
+}
+
+#tagline {
+    text-align: center;
+}
+
+.detail-section-title {
+    background: #ddd;
+    padding: 4px 10px 2px;
+}
+
+.settting {
+    margin-left: 20px;
+}
+
+ul.sections {
+    padding: 0;
+}
+
+ul.sections {
+    padding: 0;
+}
+
+ul.sections > li {
+    margin-top: 4px;
+    white-space: nowrap;
+}
+
+ul.detail {
+    padding: 6px 10px 0;
+}
+
+ul.detail > li {
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+:hover a {
+    text-decoration: none;
+    color: #008;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+    color: #00F;
+}
+.hide-focus :focus {
+    outline: none;
+}
+
+#tabs {
+    margin-top: 6px;
+}
+
+.tab {
+    display: inline-block;
+    border: 2px solid gray;
+    border-bottom: none;
+    position: relative;
+    top: 6px;
+    cursor: pointer;
+    color: gray;
+    padding: 4px 8px;
+    border-radius: 10px 10px 0 0;
+    z-index: 100;
+    background: white;
+    -webkit-transition: top 600;
+    -moz-transition: top 600;
+    -ms-transition: top 600;
+    -o-transition: top 600;
+    transition: top 600;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tab.hide {
+    display: none;
+}
+
+.tab:hover {
+    top: 4px;
+}
+
+.tab.active {
+    color: black;
+    top: 2px;
+    z-index: 300;
+}
+
+.tab:focus {
+    color: darkblue;
+    border-color: darkblue;
+    outline: none;
+}
+
+#tab-contents {
+    position: relative;
+    z-index: 200;
+    border: 2px solid gray;
+    margin: 0 0 10px;
+    background: white;
+}
+
+.sections {
+    display: none;
+    min-height: 425px;
+    padding: 8px;
+}
+
+footer {
+    text-align: center;
+}
+
+.panel {
+    padding: 10px 10px;
+}
+
+button {
+    background: #666;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+button a:hover,
+:hover button a,
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button.small {
+    font-size: 11px;
+}
+
+button.medium {
+    font-size: 14px;
+}
+
+button.large {
+    font-size: 16px;
+}
+
+button:hover {
+    background: #555E9E;
+}
+
+button:disabled {
+    background: #b8b8b8;
+    color: #ddd;
+}
+
+.field-row {
+    margin: 6px 0;
+}
+
+#shortcuts .key {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#shortcuts section {
+    margin-bottom: 10px;
+}
+
+select.value {
+    min-width: 240px;
+}
+
+
+/* Dialogs */
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.75;
+    background: #004;
+    z-index: 999000;
+    display: none;
+}
+
+.dialog {
+    position: fixed;
+    z-index: 1000000;
+    top: 50%;
+    left: 50%;
+    font-size: 24px;
+    display: none;
+}
+
+.dialog.simple > div {
+    text-align: center;
+}
+
+.dialog.simple .heading {
+    margin-bottom: 15px;
+}
+
+.dialog.simple .message {
+    margin-bottom: 15px;
+}
+
+.dialog button {
+    font-size: 80%;
+    border: none;
+}
+
+.dialog button:disabled {
+    background: #ddd;
+    color: #aaa;
+}
+
+.dialog-inner {
+    position: relative;
+    bottom: 100px;
+    left: -50%;
+    border: 8px solid #222;
+    background: white;
+    min-width: 400px;
+    border-radius: 30px;
+    padding: 40px 20px;
+}
+
+#capture-key .message {
+    text-align: center;
+}
+
+#capture-key .keystroke {
+    max-width: 300px;
+    margin: 30px auto;
+    min-height: 34px;
+    border: 2px solid #222;
+    text-align: center;
+}
+
+#capture-key .actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#shortcuts .key {
+    display: inline-block;
+    min-width: 100px;
+}
+
+kbd {
+    display: inline-block;
+    min-width: 10px;
+    text-align: center;
+    border: 1px solid #888;
+    border-radius: 0.25em;
+    box-shadow: 0.1em 0.2em 0.2em #999;
+    background-color: #f9f9f9;
+    background-image: linear-gradient(to bottom, #e4e4e4, #f9f9f9, #e4e4e4);
+    padding: 0.1em 0.3em;
+    font-family: inherit;
+    font-size: 0.85em;
+}
+
+kbd:before,
+kbd:after {
+    font-size: 0.85em;
+}
+
+kbd.key-S:before { content:'\21E7'; }
+kbd.key-S:after { content: ' Shift'; }
+
+html.gmmp-mac kbd.key-M:before { content:'\2318'; }
+html.gmmp-mac kbd.key-M:after { content: ' Command'; }
+
+html.gmmp-win kbd.key-M:before { content:'\229E'; }
+html.gmmp-win kbd.key-M:after { content: ' Win'; }
+
+html.gmmp-unix kbd.key-M:before { content:'\229E'; }
+html.gmmp-unix kbd.key-M:after { content: ' Meta'; }
+
+html.gmmp-mac kbd.key-A:before { content:'\2325'; }
+html.gmmp-mac kbd.key-A:after { content: ' Option'; }
+
+html.gmmp-win kbd.key-A:before { content:'\2325'; }
+html.gmmp-win kbd.key-A:after { content: ' Alt'; }
+
+html.gmmp-unix kbd.key-A:before { content:'\2325'; }
+html.gmmp-unix kbd.key-A:after { content: ' Alt'; }
+
+kbd.key-C:before { content:'\2303'; }
+kbd.key-C:after { content: ' Control'; }
+
+kbd {
+    margin: 1px 1px 4px;
+}
+
+.gmmp-win #version:after,
+.gmmp-linux #version:after {
+    content: " Note: Meta/Command modifier not supported on this platform.";
+    font-size: 90%;
+}
+
+#confirm-delete-macro .message {
+    text-align: center;
+}
+
+#confirm-delete-macro .actions {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.editor .key i:before,
+.keystroke i:before {
+/*     content: '\29FE'; */
+    content: "+";
+    font-style: normal;
+}
+
+.editor .actions {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    left: 0;
+    right: 0;
+}
+
+.name-key label {
+    display: inline-block;
+    width: 15%;
+}
+
+input.name {
+    width: 80%; 
+    border: 2px solid #666;
+    padding: 3px;
+    font-size: 120%;
+    color: black;
+}
+
+.name-key button {
+    margin-left: 1em;
+}
+
+#macro-list .macro-row > span {
+    padding: 4px 4px 0px;
+}
+
+#macro-list .macro-row {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#macro-list .macro-name {
+    margin-left: 0px;
+}
+#macro-list .macro-blurb,
+#macro-list .macro-key {
+    /* margin-left: 12px; */
+}
+
+.panel.list .macro-row {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0px 0px 2px 0px;
+}
+
+
+.panel.list  span {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.panel.list .macro-name {
+    display: inline-block;
+    width: 29%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 4px;
+}
+
+.panel.list .macro-key {
+    display: inline-block;
+    width: 49%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.panel.list .macro-actions {
+    display: inline-block;
+    width: 22%;
+    text-align: center;
+}
+
+#macro-list .macro-row:first-child .move-up {
+    visibility: hidden;
+}
+
+.panel.list .headers span {
+    font-size: 110%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.panel-footer {
+    text-align: center;
+}
+
+.active-modes {
+    color: gray;
+}
+
+.active-modes label {
+    color: black;
+    font-size: small;
+}
+
+.active-modes  h5 {
+    margin: 10px 0 6px 0;
+    padding: 0 0 0 0;
+    color: black;
+    font-size: initial;
+}
+
+label {
+    font-size: 110%;
+    font-weight: bold;
+}
+
+#macro-list .macro-row:nth-child(2n+1) {
+    background: #eee;
+}
+
+#macro-list .macro-row:hover {
+    #background: #ddd;
+}
+
+#macro-list button {
+    border: none;
+}
+
+.macro-row span {
+    vertical-align: middle;
+}
+
+.panel.list :not(button) {
+    -webkit-user-select: none;
+}
+
+.dialog button,
+#content button {
+    border: 1px solid rgba(0,0,0,0) !important;
+    /* margin-left: 0em; */
+}
+
+.dialog button:focus, 
+#content button:focus {
+    border: 1px solid blue !important;
+    outline: none;
+}
+
+.wide-label label {
+    width: auto;
+}
+
+#tab-contents h3 {
+    margin: 0 0 10px;
+}
+
+#import-confirm pre .preview-line {
+    color: black;
+}
+
+#import-confirm pre .line-good {
+    color: #180;
+}
+
+#import-confirm pre .line-bad {
+    color: #b00;
+}
+
+#import-confirm pre b {
+    display: inline-block;
+    width: 1.5em;
+}
+
+#import-confirm pre b:before {
+    content: ' ';
+}
+
+#import-confirm pre .line-good b:before {
+    content: '\2713';
+}
+
+#import-confirm pre .line-bad b:before {
+    content: '\24e7';
+}
+
+#import-confirm button {
+    margin-left: 0.5em;
+}
+
+#introduction table {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+#introduction table td:first-child {
+    text-align: center;
+}
+
+#introduction table td {
+    padding: 4px;
+}
+
+#introduction table tr {
+    font-size: 120%;
+}
+
+#introduction table tr:nth-child(2n + 1) {
+    /* background: #e0e0e0; */
+}
+
+#open-source aside {
+    float: right;
+    width: 79px;
+    height: 80px;
+}
+
+html {
+    background: #eee;
+}

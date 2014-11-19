@@ -1,0 +1,348 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>GMM Plus</title>
+        <link href="gmmp_options.css" rel="stylesheet" type="text/css"/>
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/lz-string-1.3.3-min.js"></script>
+        <script src="factory.js"></script>
+        <script src="common.js"></script>
+    </head>
+    <body class="hide-focus">
+        <div id="content">
+
+            <h3 id='title' tabindex="0" autofocus="autofocus">Google Map Maker Plus - UI Tweaks For Speed</h3>
+            <div id='tagline'>GitHub for <a target="_blank" href="https://github.com/mscalora/gmmplus">Source</a> &amp;  <a target="_blank" href="http://mscalora.github.io/gmmplus/gmmp_options.html">Support</a></div>
+
+            <div id="tabs">
+                <div class="tab" tabindex="0" data-target="introduction">Introduction</div>
+                <div class="tab" tabindex="0" data-target="shortcuts">Shortcuts</div>
+                <div class="tab" tabindex="0" data-target="settings">Settings</div>
+                <div class="tab" tabindex="0">Export</div>
+                <div class="tab" tabindex="0">Import</div>
+                <div class="tab" tabindex="0" data-target="open-source">Open Source</div>
+                <div class="tab" tabindex="0" data-target="about">About</div>
+                <div class="tab debug" tabindex="0">Debug</div>
+            </div>
+
+            <div id="tab-contents">
+
+                <ul id="shortcuts" class="sections">
+                    <div class="panel list">
+                        <div class="macro-row headers">
+                            <span class="macro-key">Keystroke</span>
+                            <span class="macro-name">Name</span>
+                            <span class="macro-actions">Actions</span>
+                        </div>
+                        <section id="macro-list">
+
+                        </section>
+                        <section class="panel-footer">
+                            <button id="add-macro">Create Shortcut</button>
+                        </section>
+                    </div>
+                    <div class="panel editor">
+                        <div class="row">
+                            <div class="name-key">
+                                <section>
+                                    <label>Name:</label> <input type="text" class="name"/>
+                                </section>
+                                <section>
+                                    <label>Keystroke:</label> <span class="key"></span>
+                                    <button>Change</button>
+                                </section>
+                                <section class="wide-label active-modes ">
+                                    <h5>Active while typing in fields?</h5>
+                                    <div><label><input type="checkbox" class="focus-in-text"> Shortcut active when cursor (keyboard focus) is in edit fields</label></div>
+                                    <h5>Which modes is this shortcut used?</h5>
+                                    <div><label><input type="checkbox" class="add-edit-mode"> Edit and Add Mode</label> editing details in the left hand panel</div>
+                                    <div><label><input type="checkbox" class="other-mode"> Other Times</label></div>
+                                    <h5>Should the keystoke pass through to Map Maker?</h5>
+                                    <div><label><input type="checkbox" class="pass-through"> Pass Keystroke on to Map Maker</label></div>
+                                </section>
+                            </div>
+                            <section>
+                                <label>Macro Steps:</label>
+                            </section>
+                        </div>
+                        <section class="field-section">
+                            <div class="row field-row">
+                                <select class="field">
+                                </select>
+                                <span class="action-text"> </span>
+                                <span class="choice field-value">
+                                    <select class="value">
+                                    </select>
+                                </span>
+                                <span class="numeric field-value">
+                                    <input type="number" class="value"/>
+                                </span>
+                                <span class="string field-value">
+                                    <input type="text" class="value"/>
+                                </span>
+                                <span class="delete">
+                                    <button title="Delete Row">&#x24e7;</button>
+                                </span>
+                            </div>
+                        </section>
+                        <div class="row">
+                            <button id="add-field">Add Another Field</button>
+                        </div>
+                        <div class="actions"><button class="cancel">Cancel</button> <button class="commit">Save</button></div>
+                    </div>
+                </ul>
+                <div class="import">
+                    <ul id="Import" class="sections">
+                        <div id="import-select" class="panel">
+                            <h3>Import Shortcuts - Select File</h3>
+                            <p>
+                                Select a file to import: <input id="importer" type="file"/>
+                            </p>
+                            <p>
+                                <b>Note:</b> importing will add shortcuts from the file selected to any existing shortcuts.
+                                In some cases, shortcuts can conflict because they use the same keystroke at the same time.
+                                Usually the shortcut higher in the list will take precedence when there is a conflict.
+                            </p>
+                        </div>
+                        <div id="import-confirm" class="panel">
+                            <h3>Import Shortcuts - Preview</h3>
+                            <p>
+                                Finalize import? <button class="commit">Continue</button> <button class="cancel">Discard</button>
+                            </p>
+                            <p>
+                                <pre>
+
+                                </pre>
+                            </p>
+                        </div>
+                        <div id="import-complete" class="panel">
+                            <h3>Import Shortcuts - Results</h3>
+                            <p id="import-results">
+
+                            </p>
+                            <p>
+                                <button>Done</button>
+                            </p>
+                        </div>
+                    </ul>
+                </div>
+                <div class="export">
+                    <ul id="Export" class="sections">
+                        <div class="panel">
+                            <h3>Export Shortcuts</h3>
+                            <p>
+                                Click on the <b>Download</b> button to save a copy of shortcuts to your computer.
+                            </p>
+                            <p>
+                                <button><a id="export-link" href="data:application/json,%7B%20%7D" download="export.json">Download</a></button>
+                            </p>
+                        </div>
+                    </ul>
+                </div>
+                <div class="open-source">
+                    <ul id="open-source" class="sections">
+                        <div class="panel">
+                            <aside></aside>
+                            <a href="https://github.com/mscalora/gmmplus"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+                            <h3>Open Source</h3>
+                            <p>
+                                This extention is free and open source. If you wnat to contribute, contact
+                                <a href="https://github.com/mscalora">me</a> at gmmp@codeplumber.com. You are also
+                                welcome to fork the project and create your own derivative work. Besides coders and
+                                testers, there are other areas that could use help. I've listed a few items here that
+                                require a variety of skills:
+                                <div>
+                                    <ul>
+                                        <li><b>Documentation:</b> Better help and usage info</li>
+                                        <li><b>Documentation:</b> Tutorials</li>
+                                        <li><b>Design:</b> UI Improvement</li>
+                                        <li><b>Coding:</b> More Actions</li>
+                                        <li><b>Testing:</b> Everything</li>
+                                    </ul>
+                                </div>
+                            </p>
+                        </div>
+                    </ul>
+                </div>
+                <div class="introduction">
+                    <ul id="introduction" class="sections">
+                        <div class="panel">
+                            <h3>Introduction</h3>
+                            <p>
+                                This Chrome extension has been created to facilitate the use of Google Map Maker for
+                                frequent and experienced users. I created it independently from Google without any
+                                source code, non-public documentation or inside knowledge. Hopefully, the time I
+                                have spent creating this extension will be of a benefit to other mappers and
+                                ultimately users of Google Maps.
+                            </p>
+                            <p>
+                                By default, the extension comes with a long list of shortcuts. You can get the hang of
+                                using shortcuts by using a few that are general purpose or you can dive right in and
+                                create some custom shortcuts.
+                            </p>
+                            <p>
+                                Here's a few to get started with:
+                                <table>
+                                    <tr><td><kbd>enter</kbd></td><td>Same as clicking on OK/Save/Done buttons and links</td></tr>
+                                    <tr><td><kbd>.</kbd></td><td>(period) Browse Intersections</td></tr>
+                                    <tr><td><kbd>,</kbd></td><td>(comma) Browse Roads</td></tr>
+                                    <tr><td><kbd>`</kbd></td><td>(back tick) Toggle Elastic Mode</td></tr>
+                                    <tr><td><kbd>/</kbd></td><td>(forward slash) Add Restaurant</td></tr>
+                                </table>
+                            </p>
+                            <p>
+                                I usually use a keyboard on my Mac with a numeric keypad so some of the default
+                                shortcuts are setup for those keys. The numbers 1 to 9 on the keypad are
+                                setup to create roads with specific attributes that I use frequently. You can
+                                edit those shortcuts to change the assigned keystrokes or attributes you
+                                use frequently or create some of your own on the <b>Shortcuts</b> tab. You can use
+                                modifiers like shift, option/alt and command/windows keys to create independent
+                                shortcuts, so there's lots of combinations if that's useful to you.
+                            </p>
+                            <p>
+                                Good luck and have fun. Please give me suggestions and feedback both good and bad as long
+                                as it is constructive. I can't promise I will be abel to do any specific enhancements
+                                but I'm sure there are ideas I have not thought of yet.
+                            </p>
+                            <p>
+                                You can reach me at gmmp@codeplumber.com.
+                            </p>
+                            <p>
+                                -Mike
+                            </p>
+                        </div>
+                    </ul>
+                </div>
+                <div class="about">
+                    <ul id="about" class="sections">
+                        <div class="panel">
+
+                            <h3>About GMM Plus</h3>
+                            <p>
+                                Settings are synchronised between computers using your Google account if you are signed into
+                                a Google Account in Chrome, see the "Sign In" section in Setting. Changes you make in this
+                                GMM PLus options area will synchronise across all computers using the same Google account.
+                            </p>
+                            <p>
+                                This extension was created independently without the help or direction
+                                from Google, Inc. Issues undoubtedly will arise as the Google Map Maker product changes.
+                                Please discontinue use of this extension if you ever suspect any adverse affects to Google
+                                Map Maker or the map data.
+                            </p>
+                            <p>
+                                If you experience issues, please uninstall this extension and verify the issue without the
+                                extension before contacting Google. Help and/or information may be available in the
+                                Map Maker forums but since this software is produced in my spare time it may not always be
+                                functional.
+                            </p>
+                            <p>
+                                The source code is free and open and is available on GitHub for others to contribute and/or
+                                create derivative works.
+                            </p>
+                            <p>
+                                You can reset the extension to the 'factory' settings with this button. Any shortcuts you have
+                                created or customized will be lost forever. You can use <b>Export</b> to save a copy that can
+                                be imported later. After resetting, the list of shortcuts will be restored to the default set
+                                for this version of the extension and ny you have created or modified will be gone.
+                            </p>
+                            <p>
+                                <button id="factory-reset">Reset All Settings</button>
+                            </p>
+                            <p>
+                                Google Analytics is used to capture anonymous use data for this extension. The data is used
+                                to improve the extension and prioritize future development. If you choose not to contribute
+                                back to this project you may disable telemetry with the checkbox below. The data collected
+                                is very generic and NOT personally identifiable. It focuses on frequency of feature use in
+                                the extension and diagnostic data (like anomalous software behaviour and causes).
+                            </p>
+                            <p>
+                                <label>
+                                    <input id="telemetry" type="checkbox"/> Telemetry Enabled
+                                </label>
+                            </p>
+                        </div>
+                    </ul>
+                </div>
+                <div class="debug">
+                    <ul id="Debug" class="sections">
+                        <div id="debug-keys" class="panel">
+                            <div>
+                                Key Info:
+                                <span id="debug-keyName"></span>
+                                <span id="debug-key"></span>
+                                <span id="debug-mod"></span>
+                            </div>
+                        </div>
+                        <div id="debug-settings" class="panel">
+                            <div>
+                                <button class="settings-local">Dump Local Settings</button>
+                                <button class="settings-sync">Dump Sync Storage Data</button>
+                            </div>
+                            <pre></pre>
+                        </div>
+                    </ul>
+                </div>
+                <ul id="settings" class="sections">
+                    <li><div class="detail-section-title">General</div>
+                        <ul class="detail">
+                            <li>
+                                Hide search field when not in use
+                                <div class="settting"><input type="checkbox" id="hide_search">Enabled</div>
+                            </li>
+                        </ul>
+                        <ul class="detail">
+                            <li>
+                                Focus on the <b>Surface</b> field when the add & edit left hand panel opens
+                                <div class="settting"><input type="checkbox" id="focus_surface">Enabled</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><div class="detail-section-title">Elastic Mode</div>
+                        <ul class="detail">
+                            <li>
+                                Display high visibility <b>Elastic Mode</b> indicator
+                                <div class="settting"><input type="checkbox" id="elastic_mode_indicator" data-default="true">Show Indicator</div>
+                            </li>
+                            <li>
+                                Default <b>Elastic Mode</b> to <b>on</b>
+                                <div class="settting"><input type="checkbox" id="elastic_mode_default">Default to ON</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <footer>
+                <span id="version"></span>
+                <span id="plat" class="debug"></span>
+            </footer>
+
+        </div>
+        <!-- Overlay -->
+        <div id="overlay" tabindex="1"></div>
+        <!-- Dialogs -->
+        <div id="capture-key" class="dialog">
+            <div class="dialog-inner">
+                <div class="message">Press the key you wish to use for the macro.</div>
+                <div class="keystroke"></div>
+                <div class="actions"><button class="cancel">Cancel</button> <button class="commit">Done</button></div>
+            </div>
+        </div>
+        <div id="confirm-delete-macro" class="dialog simple">
+            <div class="dialog-inner">
+                <div class="heading">Confirm delete</div>
+                <div class="actions"><button class="cancel">Cancel</button> <button class="commit">Delete</button></div>
+            </div>
+        </div>
+        <div id="confirm-reset" class="dialog simple">
+            <div class="dialog-inner">
+                <div class="heading"><b>Confirm Reset</b></div>
+                <div class="message">Are you sure? There is no undo!</div>
+                <div class="actions"><button class="cancel">Cancel</button> <button class="commit">Reset</button></div>
+            </div>
+        </div>
+    </body>
+    <script src="gmmp_options.js"></script>
+</html>
+

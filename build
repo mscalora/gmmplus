@@ -1,0 +1,44 @@
+#!/bin/bash -e
+
+echo "Parsing version number"
+
+vers="`egrep 'version"\s*:\s*"[.0-9]*"' gmmp/manifest.json | egrep -o '[.0-9]+'`"
+
+echo "Version: $vers"
+
+if [[ ! $vers ]] ; then
+   echo 'Unable to parse version number!'
+   exit 10
+fi
+
+vout="releases/gmmp-$vers.crx"
+
+if [[ -e $vout ]] ; then
+
+    echo "This version has already been packaged, either delete it, $vout, or increment the version number in gmmp/manifest.json"
+    exit 10
+
+fi
+
+echo "Building version $vers"
+
+pout="gmmp.crx"
+
+if [[ -e $out ]] ; then
+    rm $pout
+fi
+
+echo "Preparing the signature"
+openssl enc -d -aes-256-cbc -in ignore-package/GMMPlus.pem.aes-256-cbc.bh-admin-dot-org -out .signature.pem
+
+echo "Packaging the extension"
+./crxmake gmmp .signature.pem
+
+rm .signature.pem
+
+echo "Making versioned copy: $vout"
+cp $pout $vout
+
+echo "Adding $vout to the next commit"
+git add $vout
+

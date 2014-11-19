@@ -1,0 +1,42 @@
+{
+    "manifest_version": 2,
+
+    "name": "GMM Plus",
+
+    "description": "Enhance the UI of Google Map Maker.",
+
+    "version": "0.1.0",
+
+    "icons": {
+        "19": "images/ri19.png",
+        "32": "images/ri32.png",
+        "48": "images/ri48.png",
+        "64": "images/ri64.png",
+        "128": "images/ri128.png"
+    },
+
+    "options_page": "gmmp_options.html",
+
+    "background": {
+        "page": "gmmp_back.html"
+    },
+
+    "permissions": [
+        "https://www.google.com/mapmaker",
+        "storage",
+        "tabs"
+    ],
+
+    "content_scripts": [
+        {
+            "matches": [ "https://www.google.com/mapmaker*", "http://www.google.com/mapmaker*" ],
+            "css": [ "gmmp.css" ],
+            "js": [ "lib/jquery.min.js", "lib/lz-string-1.3.3-min.js", "factory.js", "common.js", "events.js", "gmmp.js" ],
+            "run_at": "document_end"
+        }
+    ],
+
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+
+    "update_url": "https://github.com/mscalora/gmmplus/blob/master/gmmp.crx"
+}
